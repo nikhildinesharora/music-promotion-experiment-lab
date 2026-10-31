@@ -6,9 +6,15 @@ four worksheets: rates, overall intervals, exploratory segment intervals, and
 experiment health. All data in the package is aggregated; no listener IDs or
 listening histories are included.
 
-The Hyper rows and package structure have been checked programmatically. Native
-Tableau rendering and publication require an interactive Tableau session and
-remain pending. No public workbook URL is claimed yet.
+The repaired package was opened in Tableau Public 2026.3, and its embedded data
+rendered in the Rates worksheet. The Hyper rows and package consistency are also
+checked programmatically. Public publication still requires an interactive
+Tableau session; no public workbook URL is claimed yet.
+
+The generator uses Tableau's `18.1` serialization format with explicit feature
+declarations. It intentionally avoids the `ManifestByVersion` shortcut, which
+caused additional grammar errors in the installed 2026.3 application. XSD checks
+alone are not treated as proof that Tableau can open a workbook.
 
 Rebuild from the latest statistical outputs:
 

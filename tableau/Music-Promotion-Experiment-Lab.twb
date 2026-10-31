@@ -1,8 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <workbook version="18.1" source-platform="win" original-version="18.1" source-build="0.0.0 (generated)">
+  <document-format-change-manifest>
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
   <preferences>
     <preference name="ui.encoding.shelf.height" value="24" />
   </preferences>
+  <style />
   <datasources>
     <datasource caption="Simulated promotion experiment" inline="true" name="experiment" version="18.1">
       <connection class="hyper" dbname="Data/experiment.hyper" schema="Extract" access-mode="readonly">
@@ -257,6 +263,7 @@
     <dashboard name="Promotion Quality Review">
       <style />
       <size maxheight="1100" maxwidth="1280" minheight="1100" minwidth="1280" />
+      <datasources />
       <zones>
         <zone id="1" type-v2="text" x="2000" y="1000" w="96000" h="9000">
           <formatted-text>
@@ -325,7 +332,4 @@ A measurement case study, not evidence of real campaign lift.</run>
       <active id="-1" />
     </window>
   </windows>
-  <explain-data enabled-for-viewer="false" extreme-values-enabled-for-all="false">
-    <explanation-types />
-  </explain-data>
 </workbook>

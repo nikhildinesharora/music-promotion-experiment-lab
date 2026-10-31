@@ -5,12 +5,16 @@
 - Last.fm source: 776,336 rows; 19,832 sampled opportunities from 50 listeners.
 - Corrected past-only context features; deterministic simulated outcomes.
 - Two dbt seeds, five models, and 38 dbt tests pass on DuckDB.
-- Sixteen Python tests pass, including leakage, allocation, and decision failures.
+- Eighteen Python tests pass, including leakage, allocation, decision failures,
+  and workbook compatibility/package consistency.
 - Browser checks cover four viewport sizes and all five metrics/three segments.
 - Decision memo fits one printed Letter page.
 - Tableau package: four worksheets and an embedded Hyper extract with aggregate
-  results. Hyper contents, Document API parsing, and core schema validation pass. Tableau rendering and
-  Public publication still need an interactive account session.
+  results. The repaired workbook opened in Tableau Public 2026.3 and rendered
+  its Rates worksheet. Hyper contents, package consistency, and the explicit
+  feature contract are checked. A modern XSD pass alone did not prove runtime
+  compatibility; the native application check is the load evidence.
+- Tableau Public publication still requires an interactive account session.
 
 ## BigQuery
 

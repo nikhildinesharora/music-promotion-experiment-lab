@@ -128,8 +128,14 @@ def build(output: Path = ROOT / "tableau") -> Path:
             "source-build": "0.0.0 (generated)",
         },
     )
+    # Explicit features match Tableau-saved workbooks and avoid enabling unrelated
+    # 2026 features (worksheet numbering/new mark types) through ManifestByVersion.
+    manifest = element(wb, "document-format-change-manifest")
+    for feature in ("SheetIdentifierTracking", "SortTagCleanup", "WindowsPersistSimpleIdentifiers"):
+        element(manifest, feature)
     preferences = element(wb, "preferences")
     element(preferences, "preference", name="ui.encoding.shelf.height", value="24")
+    element(wb, "style")
     sources = element(wb, "datasources")
     source = element(
         sources,
@@ -236,6 +242,7 @@ def build(output: Path = ROOT / "tableau") -> Path:
     dashboard = element(element(wb, "dashboards"), "dashboard", name="Promotion Quality Review")
     element(dashboard, "style")
     element(dashboard, "size", maxheight="1100", maxwidth="1280", minheight="1100", minwidth="1280")
+    element(dashboard, "datasources")
     zones = element(dashboard, "zones")
     title_zone = element(
         zones, "zone", id="1", type_v2="text", x="2000", y="1000", w="96000", h="9000"
@@ -277,10 +284,6 @@ def build(output: Path = ROOT / "tableau") -> Path:
     for title, _, _ in specifications:
         element(element(viewpoints, "viewpoint", name=title), "zoom", type="entire-view")
     element(window, "active", id="-1")
-    explain = element(
-        wb, "explain-data", enabled_for_viewer="false", extreme_values_enabled_for_all="false"
-    )
-    element(explain, "explanation-types")
     ET.indent(wb)
     workbook = output / "Music-Promotion-Experiment-Lab.twb"
     ET.ElementTree(wb).write(workbook, encoding="utf-8", xml_declaration=True)

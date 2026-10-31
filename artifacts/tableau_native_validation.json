@@ -1,0 +1,15 @@
+{
+  "verified_date": "2026-10-31",
+  "application": "Tableau Public 2026.3",
+  "application_build": "20263.26.1022.1645",
+  "workbook": "tableau/Music-Promotion-Experiment-Lab.twbx",
+  "native_window_title": "Tableau Public - Music-Promotion-Experiment-Lab",
+  "checks": [
+    "Package opens in the installed native application without XML load errors",
+    "Embedded Hyper data source is available",
+    "Rates worksheet renders control and treatment bars"
+  ],
+  "serialization_version": "18.1",
+  "compatibility_manifest": "explicit features",
+  "publication_status": "not yet published to Tableau Public"
+}

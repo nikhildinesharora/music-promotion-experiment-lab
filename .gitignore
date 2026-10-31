@@ -8,6 +8,7 @@ __pycache__/
 .local/
 *.part
 hyperd.log
+*.twbr
 
 # dbt
 target/

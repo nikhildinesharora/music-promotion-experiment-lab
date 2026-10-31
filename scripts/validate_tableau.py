@@ -1,4 +1,4 @@
-"""Optional structural check against Tableau's published 2026.1 workbook schema."""
+"""Check the feature contract; optionally validate a version-based workbook's XSD."""
 
 import argparse
 from pathlib import Path
@@ -11,9 +11,24 @@ XS = "{http://www.w3.org/2001/XMLSchema}"
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--schema", type=Path, required=True)
+    parser.add_argument("--schema", type=Path)
     args = parser.parse_args()
     workbook = etree.parse(str(ROOT / "tableau/Music-Promotion-Experiment-Lab.twb"))
+    root = workbook.getroot()
+    if root.get("version") == root.get("original-version") == "18.1":
+        manifest = root.find("document-format-change-manifest")
+        required = {"SheetIdentifierTracking", "SortTagCleanup", "WindowsPersistSimpleIdentifiers"}
+        if manifest is None or not required.issubset({node.tag for node in manifest}):
+            raise ValueError("Missing explicit compatibility feature declarations.")
+        if manifest.find("ManifestByVersion") is not None or root.find("explain-data") is not None:
+            raise ValueError("Mixed explicit-feature and version-based workbook grammars.")
+        print(
+            "PASS: explicit-feature compatibility contract. "
+            "The 2026 XSD is not its runtime grammar; native Tableau loading is required."
+        )
+        return
+    if args.schema is None:
+        parser.error("--schema is required for a version-based workbook.")
     # The published XSD omits locations for these two foreign imports. Our workbook
     # uses neither namespace, so supply declarations only to compile its core XSD.
     for node in workbook.iter():
@@ -43,6 +58,13 @@ def main():
     xml_parser = etree.XMLParser(no_network=True)
     xml_parser.resolvers.add(Imports())
     document = etree.parse(str(args.schema), xml_parser)
+    release = document.getroot().get("version", "").split(".")[:2]
+    expected = ".".join([release[0][-2:], release[1]])
+    root = workbook.getroot()
+    if root.get("version") != expected or root.get("original-version") != expected:
+        raise ValueError(f"Workbook versions must be {expected} for this schema.")
+    if root.find("document-format-change-manifest/ManifestByVersion") is None:
+        raise ValueError("The version-based workbook manifest is required.")
     for imported in document.findall(XS + "import"):
         suffix = "user.xsd" if "tableau" in imported.get("namespace", "") else "xml.xsd"
         imported.set("schemaLocation", suffix)
