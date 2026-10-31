@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_promotion_experiment
+    description: >
+      Analysis-ready experiment fact table at one row per randomized
+      session opportunity.
+    columns:
+      - name: experiment_id
+        data_tests: [not_null, unique]
+      - name: listener_id
+        data_tests: [not_null]
+      - name: assignment
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [control, treatment]
+      - name: source_mode
+        data_tests: [not_null]
+      - name: simulation_version
+        data_tests: [not_null]
+
+  - name: agg_experiment_overall
+    description: Overall product and guardrail metrics by experiment arm.
+    columns:
+      - name: assignment
+        data_tests: [not_null, unique]
+
+  - name: agg_experiment_segments
+    description: Metrics by assignment and each predeclared diagnostic segment.
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "dimension || '|' || segment || '|' || assignment"
+

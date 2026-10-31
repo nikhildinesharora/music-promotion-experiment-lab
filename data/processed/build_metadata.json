@@ -1,0 +1,15 @@
+{
+  "source_rows": 776336,
+  "eligible_sessions": 41509,
+  "experiment_rows": 19832,
+  "listeners": 50,
+  "tracks": 13444,
+  "artists": 5260,
+  "generated_at": "2026-10-31T15:34:38.927938+00:00",
+  "seed": 20261028,
+  "source_mode": "lastfm_real_context",
+  "simulation_version": "v2_past_only_context",
+  "treatment_share": 0.49939491730536506,
+  "context_seed": "seeds\\listening_contexts.csv",
+  "outcome_seed": "seeds\\promotion_outcomes.csv"
+}

@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='utf-8'?>
+<workbook version="18.1" source-platform="win" original-version="18.1" source-build="0.0.0 (generated)">
+  <preferences>
+    <preference name="ui.encoding.shelf.height" value="24" />
+  </preferences>
+  <datasources>
+    <datasource caption="Simulated promotion experiment" inline="true" name="experiment" version="18.1">
+      <connection class="hyper" dbname="Data/experiment.hyper" schema="Extract" access-mode="readonly">
+        <relation name="Extract" table="[Extract].[Extract]" type="table" />
+      </connection>
+      <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+      <column name="[label]" datatype="string" role="dimension" type="nominal" />
+      <column name="[value]" datatype="real" role="measure" type="quantitative" />
+      <column name="[width]" datatype="real" role="measure" type="quantitative" />
+      <column name="[detail]" datatype="string" role="dimension" type="nominal" />
+      <column name="[variant]" datatype="string" role="dimension" type="nominal" />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="Rates (%)">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Rates (%)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="experiment" caption="Simulated promotion experiment" />
+          </datasources>
+          <datasource-dependencies datasource="experiment">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[value]" derivation="Avg" name="[avg:value:qk]" pivot="key" type="quantitative" />
+            <column name="[width]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[width]" derivation="Avg" name="[avg:width:qk]" pivot="key" type="quantitative" />
+            <column name="[detail]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[detail]" derivation="None" name="[none:detail:nk]" pivot="key" type="nominal" />
+            <column name="[variant]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[variant]" derivation="None" name="[none:variant:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[experiment].[none:panel:nk]">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;rates&quot;" />
+          </filter>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-size" value="11" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <color column="[experiment].[none:variant:nk]" />
+              <lod column="[experiment].[none:detail:nk]" />
+            </encodings>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#137a57" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[experiment].[none:label:nk]</rows>
+        <cols>[experiment].[avg:value:qk]</cols>
+      </table>
+      <simple-id uuid="{6830C4FA-4696-5FC6-BF42-A460ADE3AB1C}" />
+    </worksheet>
+    <worksheet name="Overall lift - 95% intervals (pp)">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Overall lift - 95% intervals (pp)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="experiment" caption="Simulated promotion experiment" />
+          </datasources>
+          <datasource-dependencies datasource="experiment">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[value]" derivation="Avg" name="[avg:value:qk]" pivot="key" type="quantitative" />
+            <column name="[width]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[width]" derivation="Avg" name="[avg:width:qk]" pivot="key" type="quantitative" />
+            <column name="[detail]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[detail]" derivation="None" name="[none:detail:nk]" pivot="key" type="nominal" />
+            <column name="[variant]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[variant]" derivation="None" name="[none:variant:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[experiment].[none:panel:nk]">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;overall&quot;" />
+          </filter>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-size" value="11" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="GanttBar" />
+            <encodings>
+              <size column="[experiment].[avg:width:qk]" />
+              <lod column="[experiment].[none:detail:nk]" />
+            </encodings>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#137a57" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[experiment].[none:label:nk]</rows>
+        <cols>[experiment].[avg:value:qk]</cols>
+      </table>
+      <simple-id uuid="{B91EAE65-60A2-5091-AA29-488A00535E23}" />
+    </worksheet>
+    <worksheet name="Qualified listening by segment - exploratory (pp)">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Qualified listening by segment - exploratory (pp)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="experiment" caption="Simulated promotion experiment" />
+          </datasources>
+          <datasource-dependencies datasource="experiment">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[value]" derivation="Avg" name="[avg:value:qk]" pivot="key" type="quantitative" />
+            <column name="[width]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[width]" derivation="Avg" name="[avg:width:qk]" pivot="key" type="quantitative" />
+            <column name="[detail]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[detail]" derivation="None" name="[none:detail:nk]" pivot="key" type="nominal" />
+            <column name="[variant]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[variant]" derivation="None" name="[none:variant:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[experiment].[none:panel:nk]">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;segments&quot;" />
+          </filter>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-size" value="11" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="GanttBar" />
+            <encodings>
+              <size column="[experiment].[avg:width:qk]" />
+              <lod column="[experiment].[none:detail:nk]" />
+            </encodings>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#137a57" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[experiment].[none:label:nk]</rows>
+        <cols>[experiment].[avg:value:qk]</cols>
+      </table>
+      <simple-id uuid="{E7132224-0394-597F-91AB-FB12D96EF702}" />
+    </worksheet>
+    <worksheet name="Experiment health">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Experiment health</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name="experiment" caption="Simulated promotion experiment" />
+          </datasources>
+          <datasource-dependencies datasource="experiment">
+            <column name="[panel]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[panel]" derivation="None" name="[none:panel:nk]" pivot="key" type="nominal" />
+            <column name="[label]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[label]" derivation="None" name="[none:label:nk]" pivot="key" type="nominal" />
+            <column name="[value]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[value]" derivation="Avg" name="[avg:value:qk]" pivot="key" type="quantitative" />
+            <column name="[width]" datatype="real" role="measure" type="quantitative" />
+            <column-instance column="[width]" derivation="Avg" name="[avg:width:qk]" pivot="key" type="quantitative" />
+            <column name="[detail]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[detail]" derivation="None" name="[none:detail:nk]" pivot="key" type="nominal" />
+            <column name="[variant]" datatype="string" role="dimension" type="nominal" />
+            <column-instance column="[variant]" derivation="None" name="[none:variant:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[experiment].[none:panel:nk]">
+            <groupfilter function="member" level="[none:panel:nk]" member="&quot;health&quot;" />
+          </filter>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-size" value="11" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[experiment].[none:detail:nk]" />
+            </encodings>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#137a57" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[experiment].[none:label:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid="{97DEB1C9-CED6-5AC7-8C00-595E4D2AB596}" />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="Promotion Quality Review">
+      <style />
+      <size maxheight="1100" maxwidth="1280" minheight="1100" minwidth="1280" />
+      <zones>
+        <zone id="1" type-v2="text" x="2000" y="1000" w="96000" h="9000">
+          <formatted-text>
+            <run bold="true" fontsize="24">Music Promotion Experiment Lab
+</run>
+            <run fontsize="12">SIMULATED CAMPAIGN OUTCOMES | Historical Last.fm context
+A measurement case study, not evidence of real campaign lift.</run>
+          </formatted-text>
+        </zone>
+        <zone id="2" name="Rates (%)" x="2000" y="11000" w="46000" h="37000" />
+        <zone id="3" name="Overall lift - 95% intervals (pp)" x="51000" y="11000" w="47000" h="37000" />
+        <zone id="4" name="Qualified listening by segment - exploratory (pp)" x="2000" y="50000" w="96000" h="27000" />
+        <zone id="5" name="Experiment health" x="2000" y="79000" w="96000" h="19000" />
+      </zones>
+      <simple-id uuid="{E217547D-FA31-53FB-9159-E4344B98CDB1}" />
+    </dashboard>
+  </dashboards>
+  <windows>
+    <window class="worksheet" name="Rates (%)">
+      <viewpoints>
+        <viewpoint name="Rates (%)">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+    </window>
+    <window class="worksheet" name="Overall lift - 95% intervals (pp)">
+      <viewpoints>
+        <viewpoint name="Overall lift - 95% intervals (pp)">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+    </window>
+    <window class="worksheet" name="Qualified listening by segment - exploratory (pp)">
+      <viewpoints>
+        <viewpoint name="Qualified listening by segment - exploratory (pp)">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+    </window>
+    <window class="worksheet" name="Experiment health">
+      <viewpoints>
+        <viewpoint name="Experiment health">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+    </window>
+    <window class="dashboard" name="Promotion Quality Review">
+      <viewpoints>
+        <viewpoint name="Rates (%)">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Overall lift - 95% intervals (pp)">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Qualified listening by segment - exploratory (pp)">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Experiment health">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+    </window>
+  </windows>
+  <explain-data enabled-for-viewer="false" extreme-values-enabled-for-all="false">
+    <explanation-types />
+  </explain-data>
+</workbook>

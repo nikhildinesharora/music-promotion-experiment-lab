@@ -1,0 +1,20 @@
+music_promotion_lab:
+  target: "{{ env_var('DBT_TARGET', 'local') }}"
+  outputs:
+    local:
+      type: duckdb
+      path: target/music_promotion.duckdb
+      schema: analytics
+      threads: 4
+    bigquery:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('GCP_PROJECT_ID', 'music-promotion-experiment-lab') }}"
+      dataset: "{{ env_var('DBT_BIGQUERY_DATASET', 'music_promotion_lab') }}"
+      location: US
+      priority: interactive
+      threads: 4
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      maximum_bytes_billed: 1000000000
+

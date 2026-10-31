@@ -1,0 +1,3 @@
+assignment,played_tracks,unique_artists,unique_artists_per_1000_plays,artist_hhi
+control,5907,2578,436.43135263246995,0.0011231305482137513
+treatment,6802,2872,422.2287562481623,0.001044152138521273

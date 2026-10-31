@@ -1,0 +1,29 @@
+name: music_promotion_lab
+version: "1.0.0"
+config-version: 2
+
+profile: music_promotion_lab
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests_dbt"]
+macro-paths: ["macros"]
+analysis-paths: ["analyses"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages", "logs"]
+
+models:
+  music_promotion_lab:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  music_promotion_lab:
+    +quote_columns: false
+    listening_contexts:
+      +column_types:
+        event_timestamp: string
+        event_date: string
+

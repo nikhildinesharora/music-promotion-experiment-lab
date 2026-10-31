@@ -1,0 +1,31 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.ruff_cache/
+.tools/
+.local/
+*.part
+hyperd.log
+
+# dbt
+target/
+logs/
+dbt_packages/
+.user.yml
+
+# Downloaded source data and generated local databases
+data/raw/*
+!data/raw/.gitkeep
+seeds/*.csv
+!seeds/.gitkeep
+tableau/tableau_opportunities.csv
+*.duckdb
+*.duckdb.wal
+
+# Local credentials and environment files
+.env
+.idea/
+.vscode/
+

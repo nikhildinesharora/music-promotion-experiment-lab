@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: stg_listening_contexts
+    description: >
+      One session-level promotion opportunity. Behavioral context is derived
+      from real Last.fm listening histories or an explicitly labeled CI fixture.
+    columns:
+      - name: experiment_id
+        data_tests: [not_null, unique]
+      - name: listener_id
+        data_tests: [not_null]
+      - name: session_id
+        data_tests: [not_null, unique]
+      - name: listener_segment
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [new, returning]
+      - name: track_age_segment
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["0-30_days", "31-180_days", "181+_days"]
+      - name: artist_popularity_segment
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [emerging, mid_tail, established]
+      - name: baseline_repeat_7d
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: source_mode
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [lastfm_real_context, synthetic_ci_fixture]
+
+  - name: stg_promotion_outcomes
+    description: Deterministic simulated assignment and post-exposure outcomes.
+    columns:
+      - name: experiment_id
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('stg_listening_contexts')
+                field: experiment_id
+      - name: assignment
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [control, treatment]
+      - name: played
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: qualified_listen
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: skipped
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: saved
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: repeated_7d
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: simulation_version
+        data_tests: [not_null]
+

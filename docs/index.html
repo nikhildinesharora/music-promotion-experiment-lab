@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A product experiment measuring the quality of music promotion.">
+    <title>Music Promotion Experiment Lab</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="Music Promotion Experiment Lab home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Music Promotion <strong>Experiment Lab</strong></span>
+      </a>
+      <nav aria-label="Project links">
+        <a href="memo.html">Decision memo</a>
+        <a href="https://github.com/nikhildinesharora/music-promotion-experiment-lab">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="overview" id="overview" aria-labelledby="decision-title">
+        <div class="decision-copy">
+          <div class="eyebrow-row">
+            <span class="status-pill">SIMULATED OUTCOMES</span>
+            <span id="source-mode" class="source-label"></span>
+          </div>
+          <h1 id="decision-title">Loading experiment decision...</h1>
+          <p id="decision-rationale"></p>
+        </div>
+        <dl class="experiment-health" aria-label="Experiment health">
+          <div><dt>Opportunities</dt><dd id="opportunity-count">0</dd></div>
+          <div><dt>Treatment share</dt><dd id="treatment-share">0%</dd></div>
+          <div><dt>SRM p-value</dt><dd id="srm-value">0.000</dd></div>
+          <div><dt>IID planning MDE</dt><dd id="mde-value">0.0 pp</dd></div>
+        </dl>
+      </section>
+
+      <section class="metric-band" aria-labelledby="metric-heading">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Overall effect</p>
+            <h2 id="metric-heading">Control versus treatment</h2>
+          </div>
+          <div class="segmented-control" id="metric-control" aria-label="Metric"></div>
+        </div>
+
+        <div class="metric-layout">
+          <div class="rate-comparison" id="rate-comparison" aria-live="polite"></div>
+          <div class="effect-readout">
+            <p>Absolute lift</p>
+            <strong id="effect-value">0.0 pp</strong>
+            <span id="effect-ci">95% CI 0.0 to 0.0 pp</span>
+            <span id="effect-q">Adjusted q-value 0.000</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="segment-band" aria-labelledby="segment-heading">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Heterogeneity</p>
+            <h2 id="segment-heading">Where the effect concentrates</h2>
+          </div>
+          <div class="segmented-control" id="dimension-control" aria-label="Segment dimension"></div>
+        </div>
+        <div class="forest-wrap">
+          <svg id="forest-plot" role="img" aria-label="Segment treatment effects with confidence intervals"></svg>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Segment</th>
+                <th scope="col">Control</th>
+                <th scope="col">Treatment</th>
+                <th scope="col">Lift</th>
+                <th scope="col">95% CI</th>
+                <th scope="col">q-value</th>
+              </tr>
+            </thead>
+            <tbody id="segment-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="method-band" aria-labelledby="method-heading">
+        <div>
+          <p class="section-kicker">Metric contract</p>
+            <h2 id="method-heading">What counts as engagement</h2>
+        </div>
+        <div class="method-grid">
+          <p><strong>Primary</strong><span>A play without an early skip</span></p>
+          <p><strong>Guardrails</strong><span>Repeats, skips, artist concentration</span></p>
+          <p><strong>Inference</strong><span>Listener-cluster bootstrap, BH-adjusted segments</span></p>
+          <p><strong>Decision</strong><span>Live validation candidate or hold</span></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Public Last.fm listening context; deterministic simulated campaign outcomes.</p>
+      <p id="generated-at"></p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
+

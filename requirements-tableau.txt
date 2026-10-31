@@ -1,0 +1,3 @@
+-r requirements.txt
+tableauhyperapi==0.0.26963
+tableaudocumentapi==0.11

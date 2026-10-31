@@ -1,0 +1,201 @@
+{
+  "verified_at": "2026-10-31T15:38:11.622705+00:00",
+  "project": "music-promotion-experiment-lab",
+  "dataset": "music_promotion_lab",
+  "rows_per_warehouse": 19832,
+  "matched_sha256": "248e867ea04093bd99a9c2942a2ac9a3f86d61686b044f480b0fdf7e1ae8900a",
+  "compared_fields": "assignment, segments, and five outcomes, keyed by opportunity",
+  "dbt_invocation_id": "65108cb0-175b-4f0c-9074-224ddb56b79e",
+  "cloud_tests": [
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_listening_contexts_artist_popularity_segment__emerging__mid_tail__established.6cc33363f0",
+      "status": "pass",
+      "execution_seconds": 3.218111276626587
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_listening_contexts_baseline_repeat_7d__False__0__1.2a93ad155a",
+      "status": "pass",
+      "execution_seconds": 3.2191100120544434
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_listening_contexts_listener_segment__new__returning.51e01ddbcc",
+      "status": "pass",
+      "execution_seconds": 3.2661001682281494
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_fct_promotion_experiment_assignment__control__treatment.bc13973626",
+      "status": "pass",
+      "execution_seconds": 3.5201101303100586
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_promotion_outcomes_assignment__control__treatment.2657ab816f",
+      "status": "pass",
+      "execution_seconds": 2.6231184005737305
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_listening_contexts_source_mode__lastfm_real_context__synthetic_ci_fixture.a3160e6041",
+      "status": "pass",
+      "execution_seconds": 2.785106897354126
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_listening_contexts_track_age_segment__0_30_days__31_180_days__181__days.cb2813ba57",
+      "status": "pass",
+      "execution_seconds": 2.7901079654693604
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_promotion_outcomes_played__False__0__1.ae5fbd96b1",
+      "status": "pass",
+      "execution_seconds": 2.5521116256713867
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_promotion_outcomes_qualified_listen__False__0__1.b3b973f5b6",
+      "status": "pass",
+      "execution_seconds": 2.686671495437622
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_promotion_outcomes_skipped__False__0__1.cafdc5b9d8",
+      "status": "pass",
+      "execution_seconds": 2.7133779525756836
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_promotion_outcomes_saved__False__0__1.7279e3c9fa",
+      "status": "pass",
+      "execution_seconds": 2.90236759185791
+    },
+    {
+      "name": "test.music_promotion_lab.accepted_values_stg_promotion_outcomes_repeated_7d__False__0__1.04feee1496",
+      "status": "pass",
+      "execution_seconds": 3.1433799266815186
+    },
+    {
+      "name": "test.music_promotion_lab.assert_assignment_balance",
+      "status": "pass",
+      "execution_seconds": 2.4608964920043945
+    },
+    {
+      "name": "test.music_promotion_lab.assert_listener_segment_history",
+      "status": "pass",
+      "execution_seconds": 2.8187272548675537
+    },
+    {
+      "name": "test.music_promotion_lab.assert_probability_ranges",
+      "status": "pass",
+      "execution_seconds": 3.0477559566497803
+    },
+    {
+      "name": "test.music_promotion_lab.assert_outcome_consistency",
+      "status": "pass",
+      "execution_seconds": 3.7684850692749023
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_agg_experiment_overall_assignment.a630fb2572",
+      "status": "pass",
+      "execution_seconds": 2.8701870441436768
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_fct_promotion_experiment_assignment.da8ff50543",
+      "status": "pass",
+      "execution_seconds": 2.3156676292419434
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_fct_promotion_experiment_listener_id.d929509773",
+      "status": "pass",
+      "execution_seconds": 2.268848419189453
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_fct_promotion_experiment_experiment_id.8ce21d8bf1",
+      "status": "pass",
+      "execution_seconds": 2.793586254119873
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_fct_promotion_experiment_source_mode.de9b312a6b",
+      "status": "pass",
+      "execution_seconds": 2.1278462409973145
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_fct_promotion_experiment_simulation_version.dc8a938663",
+      "status": "pass",
+      "execution_seconds": 2.2218453884124756
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_listening_contexts_experiment_id.4758aa4483",
+      "status": "pass",
+      "execution_seconds": 2.1639628410339355
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_listening_contexts_artist_popularity_segment.40ddbd93f0",
+      "status": "pass",
+      "execution_seconds": 2.2069649696350098
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_listening_contexts_listener_id.3b2924fffe",
+      "status": "pass",
+      "execution_seconds": 1.7170963287353516
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_listening_contexts_listener_segment.549227af0e",
+      "status": "pass",
+      "execution_seconds": 2.1691040992736816
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_listening_contexts_session_id.e222cfcc66",
+      "status": "pass",
+      "execution_seconds": 1.9917519092559814
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_listening_contexts_track_age_segment.2172bd5764",
+      "status": "pass",
+      "execution_seconds": 2.150003671646118
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_promotion_outcomes_assignment.5372b058c0",
+      "status": "pass",
+      "execution_seconds": 2.2953038215637207
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_promotion_outcomes_experiment_id.e5ba21f940",
+      "status": "pass",
+      "execution_seconds": 2.2180206775665283
+    },
+    {
+      "name": "test.music_promotion_lab.not_null_stg_promotion_outcomes_simulation_version.e5adadae7d",
+      "status": "pass",
+      "execution_seconds": 2.365351915359497
+    },
+    {
+      "name": "test.music_promotion_lab.relationships_stg_promotion_outcomes_experiment_id__experiment_id__ref_stg_listening_contexts_.304b2a9085",
+      "status": "pass",
+      "execution_seconds": 2.2735793590545654
+    },
+    {
+      "name": "test.music_promotion_lab.unique_agg_experiment_overall_assignment.e4d641e009",
+      "status": "pass",
+      "execution_seconds": 2.237457036972046
+    },
+    {
+      "name": "test.music_promotion_lab.unique_agg_experiment_segments_dimension_segment_assignment.0ff9ede055",
+      "status": "pass",
+      "execution_seconds": 1.851712703704834
+    },
+    {
+      "name": "test.music_promotion_lab.unique_fct_promotion_experiment_experiment_id.fb95fb9f16",
+      "status": "pass",
+      "execution_seconds": 1.8299589157104492
+    },
+    {
+      "name": "test.music_promotion_lab.unique_stg_listening_contexts_experiment_id.5be38d111a",
+      "status": "pass",
+      "execution_seconds": 2.130446672439575
+    },
+    {
+      "name": "test.music_promotion_lab.unique_stg_listening_contexts_session_id.7ef977802d",
+      "status": "pass",
+      "execution_seconds": 1.8768465518951416
+    },
+    {
+      "name": "test.music_promotion_lab.unique_stg_promotion_outcomes_experiment_id.99fcf3c2a9",
+      "status": "pass",
+      "execution_seconds": 1.8243350982666016
+    }
+  ]
+}

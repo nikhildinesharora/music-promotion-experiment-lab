@@ -1,0 +1,2 @@
+method,control_rate,n_per_arm_conservative,alpha,power,absolute_mde,relative_mde,target_absolute_effect,required_per_arm_for_2pp
+IID Bernoulli planning approximation; ignores listener clustering,0.455781627719581,9904,0.05,0.8,0.01982798247307387,0.043503250827111026,0.02,9735
